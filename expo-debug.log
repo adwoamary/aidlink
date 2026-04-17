@@ -1,0 +1,34 @@
+2026-04-17T14:26:51.004Z expo:telemetry Switching strategy from detached to instant
+2026-04-17T14:26:51.092Z expo:telemetry Recording 1 event(s)
+2026-04-17T14:26:51.106Z expo:env Loaded environment variables from: /home/mary/aidlink/.env
+2026-04-17T14:26:51.106Z expo:env /home/mary/aidlink/.env.development does not exist, skipping this env file
+2026-04-17T14:26:51.106Z expo:env /home/mary/aidlink/.env.local does not exist, skipping this env file
+2026-04-17T14:26:51.106Z expo:env /home/mary/aidlink/.env.development.local does not exist, skipping this env file
+env: load .env
+env: export EXPO_PUBLIC_FIREBASE_API_KEY EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN EXPO_PUBLIC_FIREBASE_PROJECT_ID EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID EXPO_PUBLIC_FIREBASE_APP_ID
+Starting project at /home/mary/aidlink
+2026-04-17T14:26:51.267Z expo:prebuild-config:expo-splash-screen:ios config: {
+  image: './assets/images/splash-icon.png',
+  imageWidth: 200,
+  resizeMode: 'contain',
+  backgroundColor: '#ffffff',
+  dark: { backgroundColor: '#000000' }
+}
+/home/mary/aidlink/node_modules/expo/node_modules/@expo/cli/build/src/utils/errors.js:130
+    throw error;
+    ^
+
+RangeError [ERR_SOCKET_BAD_PORT]: options.port should be >= 0 and < 65536. Received type number (65536).
+    at Server.listen (node:net:2059:5)
+    at /home/mary/aidlink/node_modules/freeport-async/index.js:8:12
+    at new Promise (<anonymous>)
+    at testPortAsync (/home/mary/aidlink/node_modules/freeport-async/index.js:6:10)
+    at availableAsync (/home/mary/aidlink/node_modules/freeport-async/index.js:24:17)
+    at /home/mary/aidlink/node_modules/freeport-async/index.js:37:23
+    at new Promise (<anonymous>)
+    at freePortRangeAsync (/home/mary/aidlink/node_modules/freeport-async/index.js:33:10)
+    at /home/mary/aidlink/node_modules/freeport-async/index.js:43:18 {
+  code: 'ERR_SOCKET_BAD_PORT'
+}
+
+Node.js v20.19.4
