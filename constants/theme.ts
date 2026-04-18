@@ -5,16 +5,83 @@
 
 import { Platform } from 'react-native';
 
-const tintColorLight = '#0a7ea4';
+import { ResourceCategory } from '@/types/resource';
+
+const tintColorLight = '#2f7d6d';
 const tintColorDark = '#fff';
+
+export const AidLinkTheme = {
+  colors: {
+    background: '#f6f1e8',
+    backgroundMuted: '#fbf8f2',
+    surface: '#fffdfa',
+    surfaceStrong: '#ffffff',
+    border: '#ded2c0',
+    borderSoft: '#ebe2d6',
+    text: '#20313d',
+    textMuted: '#5b6975',
+    textSoft: '#7b8793',
+    headingOnDark: '#fffaf5',
+    textOnDark: '#e7dfd3',
+    primary: '#1f4f59',
+    secondary: '#c56f4d',
+    accent: '#2f7d6d',
+    success: '#1f6a4e',
+    successSoft: '#e2f3ea',
+    info: '#305f80',
+    infoSoft: '#e5eef6',
+    danger: '#ba4d47',
+    dangerSoft: '#f9e3e0',
+  },
+  spacing: {
+    screen: 20,
+    card: 20,
+    cardLarge: 24,
+  },
+  radius: {
+    chip: 999,
+    input: 16,
+    card: 24,
+    hero: 28,
+  },
+};
+
+export const CategoryColors: Record<
+  ResourceCategory,
+  {
+    fill: string;
+    text: string;
+  }
+> = {
+  Food: {
+    fill: '#f7e3d8',
+    text: '#9d5438',
+  },
+  Shelter: {
+    fill: '#e3ecef',
+    text: '#335767',
+  },
+  Medical: {
+    fill: '#e1f1ec',
+    text: '#256554',
+  },
+  Jobs: {
+    fill: '#efe4f3',
+    text: '#6c4d7c',
+  },
+  'Financial Help': {
+    fill: '#f6ebce',
+    text: '#8c6b19',
+  },
+};
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#fff',
+    text: AidLinkTheme.colors.text,
+    background: AidLinkTheme.colors.background,
     tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
+    icon: AidLinkTheme.colors.textSoft,
+    tabIconDefault: AidLinkTheme.colors.textSoft,
     tabIconSelected: tintColorLight,
   },
   dark: {

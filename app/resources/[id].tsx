@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Screen } from '@/components/screen';
+import { AidLinkTheme, CategoryColors } from '@/constants/theme';
 import { getResourceById } from '@/services/resources';
 import { FirestoreResource } from '@/types/resource';
 
@@ -57,6 +58,8 @@ export default function ResourceDetailScreen() {
   }
 
   if (loadMessage && resource) {
+    const categoryColors = CategoryColors[resource.category];
+
     return (
       <Screen>
         <Stack.Screen options={{ title: resource.name }} />
@@ -68,7 +71,9 @@ export default function ResourceDetailScreen() {
           </View>
 
           <View style={styles.heroCard}>
-            <Text style={styles.category}>{resource.category}</Text>
+            <View style={[styles.categoryChip, { backgroundColor: categoryColors.fill }]}>
+              <Text style={[styles.category, { color: categoryColors.text }]}>{resource.category}</Text>
+            </View>
             <Text style={styles.title}>{resource.name}</Text>
             <Text style={styles.description}>{resource.description}</Text>
           </View>
@@ -106,13 +111,17 @@ export default function ResourceDetailScreen() {
     );
   }
 
+  const categoryColors = CategoryColors[resource.category];
+
   return (
     <Screen>
       <Stack.Screen options={{ title: resource.name }} />
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.heroCard}>
-          <Text style={styles.category}>{resource.category}</Text>
+          <View style={[styles.categoryChip, { backgroundColor: categoryColors.fill }]}>
+            <Text style={[styles.category, { color: categoryColors.text }]}>{resource.category}</Text>
+          </View>
           <Text style={styles.title}>{resource.name}</Text>
           <Text style={styles.description}>{resource.description}</Text>
         </View>
@@ -139,62 +148,72 @@ export default function ResourceDetailScreen() {
 
 const styles = StyleSheet.create({
   content: {
-    padding: 20,
+    padding: AidLinkTheme.spacing.screen,
     gap: 16,
   },
   heroCard: {
-    backgroundColor: '#162033',
-    borderRadius: 24,
-    padding: 24,
-    gap: 10,
+    backgroundColor: AidLinkTheme.colors.surfaceStrong,
+    borderRadius: AidLinkTheme.radius.hero,
+    borderWidth: 1,
+    borderColor: AidLinkTheme.colors.borderSoft,
+    padding: AidLinkTheme.spacing.cardLarge,
+    gap: 12,
+  },
+  categoryChip: {
+    alignSelf: 'flex-start',
+    borderRadius: AidLinkTheme.radius.chip,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
   },
   category: {
-    color: '#8bd3ff',
     fontSize: 13,
     fontWeight: '700',
-    letterSpacing: 0.8,
-    textTransform: 'uppercase',
+    letterSpacing: 0.2,
   },
   title: {
-    color: '#ffffff',
+    color: AidLinkTheme.colors.text,
     fontSize: 28,
     fontWeight: '800',
     lineHeight: 34,
   },
   description: {
-    color: '#d8e3f0',
+    color: AidLinkTheme.colors.textMuted,
     fontSize: 16,
     lineHeight: 24,
   },
   infoCard: {
-    backgroundColor: '#ffffff',
-    borderRadius: 20,
+    backgroundColor: AidLinkTheme.colors.surface,
+    borderRadius: AidLinkTheme.radius.card,
+    borderWidth: 1,
+    borderColor: AidLinkTheme.colors.borderSoft,
     padding: 20,
     gap: 10,
   },
   messageCard: {
-    backgroundColor: '#eef6ff',
-    borderRadius: 20,
+    backgroundColor: AidLinkTheme.colors.infoSoft,
+    borderRadius: AidLinkTheme.radius.card,
+    borderWidth: 1,
+    borderColor: '#c7dae8',
     padding: 20,
     gap: 8,
   },
   messageTitle: {
-    color: '#162033',
+    color: AidLinkTheme.colors.text,
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   sectionTitle: {
-    color: '#162033',
+    color: AidLinkTheme.colors.text,
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   infoRow: {
-    color: '#526077',
+    color: AidLinkTheme.colors.textMuted,
     fontSize: 15,
     lineHeight: 22,
   },
   serviceItem: {
-    color: '#162033',
+    color: AidLinkTheme.colors.text,
     fontSize: 15,
     lineHeight: 22,
   },
@@ -206,12 +225,12 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   emptyTitle: {
-    color: '#162033',
+    color: AidLinkTheme.colors.text,
     fontSize: 22,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   emptyText: {
-    color: '#526077',
+    color: AidLinkTheme.colors.textMuted,
     fontSize: 15,
     lineHeight: 22,
     textAlign: 'center',

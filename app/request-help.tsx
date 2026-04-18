@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 
 import { Screen } from '@/components/screen';
+import { AidLinkTheme } from '@/constants/theme';
 import { HelpRequestFormInput, submitHelpRequest } from '@/services/help-requests';
 
 export default function RequestHelpScreen() {
@@ -94,10 +95,11 @@ export default function RequestHelpScreen() {
     <Screen>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.heroCard}>
+          <Text style={styles.eyebrow}>Support intake</Text>
           <Text style={styles.title}>Request help</Text>
           <Text style={styles.description}>
-            This starter form is intentionally simple. Later, you can connect it to validation,
-            submission logic, and a real backend.
+            Share a few details so a support team can understand the situation and follow up
+            quickly.
           </Text>
         </View>
 
@@ -121,7 +123,7 @@ export default function RequestHelpScreen() {
             value={form.fullName}
             onChangeText={(value) => updateField('fullName', value)}
             placeholder="Jane Doe"
-            placeholderTextColor="#8a94a6"
+            placeholderTextColor={AidLinkTheme.colors.textSoft}
             style={[styles.input, errors.fullName ? styles.inputError : undefined]}
             editable={!isSubmitting}
           />
@@ -132,7 +134,7 @@ export default function RequestHelpScreen() {
             value={form.contact}
             onChangeText={(value) => updateField('contact', value)}
             placeholder="jane@example.com"
-            placeholderTextColor="#8a94a6"
+            placeholderTextColor={AidLinkTheme.colors.textSoft}
             style={[styles.input, errors.contact ? styles.inputError : undefined]}
             editable={!isSubmitting}
           />
@@ -143,7 +145,7 @@ export default function RequestHelpScreen() {
             value={form.helpType}
             onChangeText={(value) => updateField('helpType', value)}
             placeholder="Food, shelter, transportation, legal support..."
-            placeholderTextColor="#8a94a6"
+            placeholderTextColor={AidLinkTheme.colors.textSoft}
             style={[styles.input, errors.helpType ? styles.inputError : undefined]}
             editable={!isSubmitting}
           />
@@ -154,7 +156,7 @@ export default function RequestHelpScreen() {
             value={form.details}
             onChangeText={(value) => updateField('details', value)}
             placeholder="Share any details that would help a support team respond."
-            placeholderTextColor="#8a94a6"
+            placeholderTextColor={AidLinkTheme.colors.textSoft}
             style={[
               styles.input,
               styles.multilineInput,
@@ -194,106 +196,122 @@ function FieldLabel({ children }: { children: string }) {
 
 const styles = StyleSheet.create({
   content: {
-    padding: 20,
+    padding: AidLinkTheme.spacing.screen,
     gap: 16,
   },
   heroCard: {
-    backgroundColor: '#ffffff',
-    borderRadius: 20,
+    backgroundColor: AidLinkTheme.colors.surface,
+    borderRadius: AidLinkTheme.radius.card,
+    borderWidth: 1,
+    borderColor: AidLinkTheme.colors.borderSoft,
     padding: 20,
     gap: 8,
   },
-  title: {
-    color: '#162033',
-    fontSize: 24,
+  eyebrow: {
+    color: AidLinkTheme.colors.secondary,
+    fontSize: 12,
     fontWeight: '700',
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+  },
+  title: {
+    color: AidLinkTheme.colors.text,
+    fontSize: 24,
+    fontWeight: '800',
   },
   description: {
-    color: '#526077',
+    color: AidLinkTheme.colors.textMuted,
     fontSize: 15,
     lineHeight: 22,
   },
   formCard: {
-    backgroundColor: '#ffffff',
-    borderRadius: 20,
+    backgroundColor: AidLinkTheme.colors.surfaceStrong,
+    borderRadius: AidLinkTheme.radius.card,
+    borderWidth: 1,
+    borderColor: AidLinkTheme.colors.borderSoft,
     padding: 20,
     gap: 10,
   },
   label: {
-    color: '#162033',
+    color: AidLinkTheme.colors.text,
     fontSize: 14,
-    fontWeight: '600',
-    marginTop: 4,
+    fontWeight: '700',
+    marginTop: 6,
   },
   input: {
-    backgroundColor: '#f3f6fb',
-    borderRadius: 14,
+    backgroundColor: AidLinkTheme.colors.backgroundMuted,
+    borderRadius: AidLinkTheme.radius.input,
     borderWidth: 1,
-    borderColor: '#f3f6fb',
-    color: '#162033',
+    borderColor: AidLinkTheme.colors.border,
+    color: AidLinkTheme.colors.text,
     fontSize: 15,
     paddingHorizontal: 14,
     paddingVertical: 14,
   },
   inputError: {
-    borderColor: '#d64545',
+    borderColor: AidLinkTheme.colors.danger,
+    backgroundColor: AidLinkTheme.colors.dangerSoft,
   },
   multilineInput: {
     minHeight: 120,
   },
   errorText: {
-    color: '#d64545',
+    color: AidLinkTheme.colors.danger,
     fontSize: 13,
     lineHeight: 18,
     marginTop: -2,
   },
   submitButton: {
-    backgroundColor: '#162033',
-    borderRadius: 14,
+    backgroundColor: AidLinkTheme.colors.primary,
+    borderRadius: 16,
     paddingHorizontal: 18,
     paddingVertical: 15,
-    marginTop: 8,
+    marginTop: 10,
   },
   submitButtonDisabled: {
     opacity: 0.7,
   },
   submitButtonText: {
-    color: '#ffffff',
+    color: AidLinkTheme.colors.headingOnDark,
     fontSize: 15,
     fontWeight: '700',
     textAlign: 'center',
   },
   successBox: {
-    backgroundColor: '#e8fbf1',
-    borderRadius: 16,
+    backgroundColor: AidLinkTheme.colors.successSoft,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: '#c3e1d2',
     padding: 16,
     gap: 6,
     marginBottom: 2,
   },
   successTitle: {
-    color: '#145a3d',
+    color: AidLinkTheme.colors.success,
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   successText: {
-    color: '#1f6f4f',
+    color: AidLinkTheme.colors.success,
     fontSize: 14,
     lineHeight: 21,
   },
   noteBox: {
-    backgroundColor: '#eef6ff',
-    borderRadius: 16,
+    backgroundColor: AidLinkTheme.colors.infoSoft,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: '#c7dae8',
     padding: 16,
     gap: 6,
     marginTop: 6,
   },
   noteTitle: {
-    color: '#162033',
+    color: AidLinkTheme.colors.text,
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   noteText: {
-    color: '#526077',
+    color: AidLinkTheme.colors.textMuted,
     fontSize: 14,
     lineHeight: 21,
   },

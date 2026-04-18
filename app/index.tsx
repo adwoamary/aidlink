@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { ResourceCard } from '@/components/resource-card';
 import { Screen } from '@/components/screen';
+import { AidLinkTheme } from '@/constants/theme';
 import { resources } from '@/data/resources';
 
 export default function HomeScreen() {
@@ -12,11 +13,25 @@ export default function HomeScreen() {
     <Screen>
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
         <View style={styles.hero}>
-          <Text style={styles.eyebrow}>Community support, simplified</Text>
-          <Text style={styles.title}>Find trusted help and make requests in one place.</Text>
+          <View style={styles.heroBadge}>
+            <Text style={styles.eyebrow}>Community support, simplified</Text>
+          </View>
+          <Text style={styles.title}>Trusted local help, presented with clarity and care.</Text>
           <Text style={styles.description}>
-            AidLink helps people browse local support resources and quickly start a help request.
+            AidLink helps people browse support resources, understand what is available, and start
+            a request without extra friction.
           </Text>
+
+          <View style={styles.heroHighlights}>
+            <View style={styles.heroHighlightCard}>
+              <Text style={styles.heroHighlightValue}>Local</Text>
+              <Text style={styles.heroHighlightLabel}>Resource discovery</Text>
+            </View>
+            <View style={styles.heroHighlightCard}>
+              <Text style={styles.heroHighlightValue}>Simple</Text>
+              <Text style={styles.heroHighlightLabel}>Request intake flow</Text>
+            </View>
+          </View>
 
           <View style={styles.actionRow}>
             <Link href="/resources" style={[styles.button, styles.primaryButton]}>
@@ -31,7 +46,8 @@ export default function HomeScreen() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Featured resources</Text>
           <Text style={styles.sectionText}>
-            These examples use mock data for now, so you can focus on app structure first.
+            A small selection of support options to help people quickly orient themselves and take
+            the next step.
           </Text>
         </View>
 
@@ -52,86 +68,123 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   content: {
-    padding: 20,
+    padding: AidLinkTheme.spacing.screen,
     gap: 18,
   },
   hero: {
-    backgroundColor: '#162033',
-    borderRadius: 24,
-    padding: 24,
-    gap: 12,
+    backgroundColor: AidLinkTheme.colors.primary,
+    borderRadius: AidLinkTheme.radius.hero,
+    padding: AidLinkTheme.spacing.cardLarge,
+    gap: 14,
+    borderWidth: 1,
+    borderColor: '#355f67',
+  },
+  heroBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: 'rgba(255, 250, 245, 0.12)',
+    borderRadius: AidLinkTheme.radius.chip,
+    paddingHorizontal: 12,
+    paddingVertical: 7,
   },
   eyebrow: {
-    color: '#8bd3ff',
-    fontSize: 13,
+    color: '#d5ebe7',
+    fontSize: 12,
     fontWeight: '700',
-    letterSpacing: 0.8,
+    letterSpacing: 0.5,
     textTransform: 'uppercase',
   },
   title: {
-    color: '#ffffff',
-    fontSize: 30,
+    color: AidLinkTheme.colors.headingOnDark,
+    fontSize: 32,
     fontWeight: '800',
-    lineHeight: 36,
+    lineHeight: 38,
   },
   description: {
-    color: '#d8e3f0',
+    color: AidLinkTheme.colors.textOnDark,
     fontSize: 16,
     lineHeight: 24,
+  },
+  heroHighlights: {
+    flexDirection: 'row',
+    gap: 10,
+    marginTop: 4,
+  },
+  heroHighlightCard: {
+    flex: 1,
+    backgroundColor: 'rgba(255, 250, 245, 0.1)',
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 250, 245, 0.14)',
+    padding: 14,
+    gap: 2,
+  },
+  heroHighlightValue: {
+    color: AidLinkTheme.colors.headingOnDark,
+    fontSize: 17,
+    fontWeight: '800',
+  },
+  heroHighlightLabel: {
+    color: AidLinkTheme.colors.textOnDark,
+    fontSize: 13,
+    lineHeight: 18,
   },
   actionRow: {
     flexDirection: 'row',
     gap: 12,
     marginTop: 8,
+    flexWrap: 'wrap',
   },
   button: {
-    borderRadius: 14,
+    borderRadius: 16,
     paddingHorizontal: 18,
     paddingVertical: 14,
   },
   primaryButton: {
-    backgroundColor: '#7ce0b8',
+    backgroundColor: AidLinkTheme.colors.secondary,
   },
   secondaryButton: {
-    backgroundColor: '#ffffff',
+    backgroundColor: AidLinkTheme.colors.surfaceStrong,
   },
   primaryButtonText: {
-    color: '#162033',
+    color: AidLinkTheme.colors.headingOnDark,
     fontSize: 15,
     fontWeight: '700',
   },
   secondaryButtonText: {
-    color: '#162033',
+    color: AidLinkTheme.colors.primary,
     fontSize: 15,
     fontWeight: '700',
   },
   section: {
-    gap: 6,
+    gap: 8,
+    marginTop: 6,
   },
   sectionTitle: {
-    color: '#162033',
+    color: AidLinkTheme.colors.text,
     fontSize: 22,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   sectionText: {
-    color: '#526077',
+    color: AidLinkTheme.colors.textMuted,
     fontSize: 15,
     lineHeight: 22,
   },
   quickInfoCard: {
-    backgroundColor: '#ffffff',
-    borderRadius: 20,
+    backgroundColor: AidLinkTheme.colors.surface,
+    borderRadius: AidLinkTheme.radius.card,
+    borderWidth: 1,
+    borderColor: AidLinkTheme.colors.borderSoft,
     padding: 20,
     gap: 10,
     marginBottom: 8,
   },
   quickInfoTitle: {
-    color: '#162033',
+    color: AidLinkTheme.colors.text,
     fontSize: 18,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   quickInfoText: {
-    color: '#526077',
+    color: AidLinkTheme.colors.textMuted,
     fontSize: 15,
     lineHeight: 22,
   },

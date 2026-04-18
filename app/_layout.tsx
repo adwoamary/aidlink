@@ -1,6 +1,8 @@
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
+import { AidLinkTheme } from '@/constants/theme';
+
 export default function RootLayout() {
   return (
     <>
@@ -8,14 +10,14 @@ export default function RootLayout() {
         screenOptions={{
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: '#f7f9fc',
+            backgroundColor: AidLinkTheme.colors.background,
           },
-          headerTintColor: '#162033',
+          headerTintColor: AidLinkTheme.colors.text,
           headerTitleStyle: {
             fontWeight: '700',
           },
           contentStyle: {
-            backgroundColor: '#f7f9fc',
+            backgroundColor: AidLinkTheme.colors.background,
           },
         }}>
         <Stack.Screen name="index" options={{ title: 'AidLink', headerLargeTitle: true }} />
